@@ -1,8 +1,30 @@
 package view;
 
+import model.Toy_List;
+
+import java.util.Scanner;
+
 public class ProgView {
+    ProgCommands command;
+
     public void run() {
-        runMenu();
+        Toy_List toy_list = new Toy_List();
+        while (true) {
+            runMenu();
+            String inputComand = userInputComand("Введите команду");
+            command = ProgCommands.valueOf(inputComand.toUpperCase());
+            if (command == ProgCommands.EXIT) return;
+            switch (command) {
+                case RUN:
+                    int quantityToy = Integer.parseInt(userInputComand("Введите количество игрушек: "));
+                    int numberOfPlayers = Integer.parseInt(userInputComand("Введите количество участников: "));
+                    toy_list.creatToyList(quantityToy, numberOfPlayers);
+//                    for (int i = 0; i < toy_list.getListToy().size(); i++) {
+//                        System.out.println(toy_list.getListToy().get(i).getName());
+//                    }
+            }
+        }
+
     }
 
     private void runMenu() {
@@ -20,8 +42,11 @@ public class ProgView {
         System.out.println(ProgCommands.COMPLETE + " - Выдать игрушку победителю");
     }
 
-    private void inputMenu() {
-        String inputPart = "Введите количество участников: ";
-        String inputPrizes = "Введите количество призов: ";
+
+    //    Метод пользовательского ввода
+    private String userInputComand(String message) {
+        Scanner in = new Scanner(System.in);
+        System.out.println(message);
+        return in.nextLine();
     }
 }

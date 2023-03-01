@@ -7,7 +7,6 @@ public enum ProgCommands {
     ISSUE,
     CLEAR,
     COMPLETE,
-    EXIT,
-
+    EXIT
 
 }
