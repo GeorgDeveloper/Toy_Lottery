@@ -11,10 +11,12 @@ public class Toy_List {
     private static Toy toy;
     private static List<Toy> listToy;
 
+    private static List listTmp;
+
     private static Random random;
 
     //    Создаем лист игрушек для розыгрыша
-    public void creatToyList(int quantityToy, int numberOfPlayers) {
+    public static void creatToyList(int quantityToy, int numberOfPlayers) {
         listToy = new ArrayList<>();
         int id = 0;
         int tmp;
@@ -31,24 +33,33 @@ public class Toy_List {
             throw new RuntimeException(e);
         }
 
-        if (quantityToy > numberOfPlayers) {
-            tmp = numberOfPlayers;
-        } else {
-            tmp = quantityToy;
+        random = new Random();
+        listTmp = new ArrayList<>();
+        for (int i = 0; i < quantityToy; i++) {
+            int indexNameToy = random.nextInt(toyName.length);
+            listTmp.add(toyName[indexNameToy]);
         }
 
-        for (int i = 0; i < tmp; i++) {
-            random = new Random();
-            int indexNameToy = random.nextInt(toyName.length);
-            int numberOfPositions = random.nextInt((tmp / toyName.length));
-            int weight = random.nextInt(100);
-            toy = new Toy(id, weight, toyName[indexNameToy]);
-            listToy.add(toy);
-            id += 1;
+        int count = toyName.length;
+        for (int i = 0; i < toyName.length; i++) {
+            int numberName = 0;
+            for (int j = 0; j < quantityToy; j++) {
+                if (toyName[i] == listTmp.get(j)) {
+                    numberName += 1;
+                }
+
+            }
+            if (count != 0) {
+                int weight = random.nextInt(100);
+                toy = new Toy(id, numberName, weight, toyName[i]);
+                listToy.add(toy);
+                id++;
+                count--;
+            }
         }
     }
 
-    public List<Toy> getListToy() {
+    public static List<Toy> getListToy() {
         return listToy;
     }
 }

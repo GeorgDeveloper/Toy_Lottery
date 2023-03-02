@@ -1,5 +1,8 @@
 package view;
 
+import controllers.Output;
+import controllers.Raffle;
+import model.Players;
 import model.Toy_List;
 
 import java.util.Scanner;
@@ -8,7 +11,6 @@ public class ProgView {
     ProgCommands command;
 
     public void run() {
-        Toy_List toy_list = new Toy_List();
         while (true) {
             runMenu();
             String inputComand = userInputComand("Введите команду");
@@ -18,10 +20,16 @@ public class ProgView {
                 case RUN:
                     int quantityToy = Integer.parseInt(userInputComand("Введите количество игрушек: "));
                     int numberOfPlayers = Integer.parseInt(userInputComand("Введите количество участников: "));
-                    toy_list.creatToyList(quantityToy, numberOfPlayers);
-//                    for (int i = 0; i < toy_list.getListToy().size(); i++) {
-//                        System.out.println(toy_list.getListToy().get(i).getName());
-//                    }
+                    Toy_List.creatToyList(quantityToy, numberOfPlayers);
+                    Players.createPlayers(numberOfPlayers);
+                    Output.print();
+                    Raffle.randLottery(quantityToy, numberOfPlayers);
+                    Output.printWinner();
+                    break;
+
+                case LISTPRIZES:
+                    Output.print();
+
             }
         }
 
