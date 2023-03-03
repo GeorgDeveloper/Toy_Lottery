@@ -4,7 +4,7 @@ import controllers.WorkingWithFfile;
 
 import java.util.ArrayList;
 
-public class nameToyList {
+public class NameToyList {
     private static ArrayList arrayList = new ArrayList<>();
 
     public static void createNameToyList(String name) {

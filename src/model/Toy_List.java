@@ -1,10 +1,8 @@
 package model;
 
 import controllers.WorkingWithFfile;
+import view.ProgView;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -18,7 +16,7 @@ public class Toy_List {
     private static Random random;
 
     //    Создаем лист игрушек для розыгрыша
-    public static void creatToyList(int quantityToy, int numberOfPlayers) {
+    public static void creatToyList(int quantityToy) {
         listToy = new ArrayList<>();
         int id = 0;
 
@@ -53,4 +51,5 @@ public class Toy_List {
     public static List<Toy> getListToy() {
         return listToy;
     }
+
 }

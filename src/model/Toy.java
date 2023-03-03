@@ -1,12 +1,12 @@
 package model;
 
 public class Toy {
-    int id;
+    private int id;
     //    количество
-    int quantity;
+    private int quantity;
     //    вес
-    int weight;
-    String name;
+    private int weight;
+    private String name;
 
     public Toy(int id, int quantity, int weight, String name) {
         this.id = id;

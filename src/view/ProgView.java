@@ -6,7 +6,7 @@ import controllers.WorkingWithFfile;
 import model.Players;
 import model.Toy_List;
 import model.Winner_List;
-import model.nameToyList;
+import model.NameToyList;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -26,7 +26,7 @@ public class ProgView {
                     if (WorkingWithFfile.theFileExists("BD_Name_Toy.csv")) {
                         int quantityToy = Integer.parseInt(userInputComand("Введите количество игрушек: "));
                         int numberOfPlayers = Integer.parseInt(userInputComand("Введите количество участников: "));
-                        Toy_List.creatToyList(quantityToy, numberOfPlayers);
+                        Toy_List.creatToyList(quantityToy);
                         Players.createPlayers(numberOfPlayers);
                         Output.print();
                         Raffle.randLottery(quantityToy, numberOfPlayers);
@@ -57,13 +57,13 @@ public class ProgView {
                 case CREATETOY:
                     while (true) {
                         String nameToy = userInputComand("Введите название игрушки: ");
-                        nameToyList.createNameToyList(nameToy);
+                        NameToyList.createNameToyList(nameToy);
                         String next = userInputComand("Продолжить ввод Y/N: ").toUpperCase();
                         if (next.equals("N")) {
                             break;
                         }
                     }
-                    nameToyList.writeNameToyList();
+                    NameToyList.writeNameToyList();
                     break;
 
                 case CLEAR:
@@ -87,7 +87,7 @@ public class ProgView {
 
     //    Внутреннее меню
     private void outputMenu() {
-        System.out.println("\n" + ProgCommands.LISTWINNER + " - Посмотреть список победителей\n" +
+        System.out.println("\n" +
                 ProgCommands.ISSUE + " - Показать не разыгранные призы\n" +
                 ProgCommands.COMPLETE + " - Выдать все призы\n" +
                 ProgCommands.EXIT + " - Выйти из меню");

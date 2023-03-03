@@ -13,9 +13,11 @@ public class Winner_List {
         nameWinner = (String) Players.getNamePlayers().get(randomIndexOne);
 
         if (Toy_List.getListToy().get(randomIndexTwo).getQuantity() != 0) {
-            winner = new Winner(nameWinner, Toy_List.getListToy().get(randomIndexTwo).getName());
-            winnerList.add(winner);
-            Toy_List.getListToy().get(randomIndexTwo).setQuantity(Toy_List.getListToy().get(randomIndexTwo).getQuantity() - 1);
+            if (Toy_List.getListToy().get(randomIndexTwo).getWeight() != 0) {
+                winner = new Winner(nameWinner, Toy_List.getListToy().get(randomIndexTwo).getName());
+                winnerList.add(winner);
+                Toy_List.getListToy().get(randomIndexTwo).setQuantity(Toy_List.getListToy().get(randomIndexTwo).getQuantity() - 1);
+            }
         }
     }
 
