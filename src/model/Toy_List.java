@@ -1,5 +1,7 @@
 package model;
 
+import controllers.WorkingWithFfile;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -19,19 +21,8 @@ public class Toy_List {
     public static void creatToyList(int quantityToy, int numberOfPlayers) {
         listToy = new ArrayList<>();
         int id = 0;
-        int tmp;
-        BufferedReader frid;
-        String[] toyName = new String[5];
-        try {
-            frid = new BufferedReader(new FileReader("BD_Name_Toy.csv"));
-            String temp;
-            while ((temp = frid.readLine()) != null) {
-                toyName = temp.split(";");
-            }
-            frid.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+
+        String[] toyName = WorkingWithFfile.readFile("BD_Name_Toy.csv");
 
         random = new Random();
         listTmp = new ArrayList<>();
